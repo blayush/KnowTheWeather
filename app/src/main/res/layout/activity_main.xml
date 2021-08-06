@@ -24,6 +24,7 @@
         android:id="@+id/headingtextView"
         android:layout_width="361dp"
         android:layout_height="95dp"
+        android:background="#3CC89F9F"
         android:fontFamily="@font/aladin"
         android:gravity="center"
         android:text="Know The Weather"

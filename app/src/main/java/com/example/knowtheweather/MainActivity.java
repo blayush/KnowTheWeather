@@ -35,17 +35,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_main);
-        // Define ActionBar object
-//        ActionBar actionBar;
-//        actionBar = getSupportActionBar();
-//
-//        // Define ColorDrawable object and parse color
-//        // using parseColor method
-//        // with color hash code as its parameter
-//        ColorDrawable colorDrawable = new ColorDrawable(Color.parseColor("#AD8273"));
-//
-//        // Set BackgroundDrawable
-//        actionBar.setBackgroundDrawable(colorDrawable);
+
         editTextCityName =(EditText)findViewById(R.id.editTextTextCityName);
         weatherTextView=(TextView)findViewById(R.id.weathertextView);
     }
