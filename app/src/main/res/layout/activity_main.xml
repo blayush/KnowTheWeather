@@ -43,6 +43,7 @@
         android:layout_height="49dp"
         android:capitalize="words"
         android:ems="10"
+        android:gravity="center"
         android:hint="Enter a City"
         android:inputType="textPersonName"
         android:textAppearance="@style/TextAppearance.AppCompat.Body2"
