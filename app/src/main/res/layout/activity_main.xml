@@ -2,39 +2,47 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mainConstraintLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/gradient_list"
     tools:context=".MainActivity">
 
-    <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="411dp"
-        android:layout_height="853dp"
-        android:contentDescription="@string/todo"
-        android:foregroundGravity="fill_vertical"
-        android:scaleType="centerCrop"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+    <!--    <ImageView-->
+    <!--        android:id="@+id/imageView"-->
+    <!--        android:layout_width="411dp"-->
+    <!--        android:layout_height="853dp"-->
+    <!--        android:contentDescription="@string/todo"-->
+    <!--        android:foregroundGravity="fill_vertical"-->
+    <!--        android:scaleType="centerCrop"-->
+    <!--        app:layout_constraintBottom_toBottomOf="parent"-->
+    <!--        app:layout_constraintEnd_toEndOf="parent"-->
+    <!--        app:layout_constraintStart_toStartOf="parent"-->
+    <!--        app:layout_constraintTop_toTopOf="parent"-->
+    <!--        app:layout_constraintVertical_bias="0.941"-->
+    <!--        app:srcCompat="@drawable/weatherbackground" />-->
+
+    <!--        app:layout_constraintStart_toStartOf="@+id/imageView"--><![CDATA[
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.941"
-        app:srcCompat="@drawable/weatherbackground" />
+        app:layout_constraintVertical_bias="0.283" />
+
+    ]]>
 
     <TextView
         android:id="@+id/headingtextView"
         android:layout_width="361dp"
         android:layout_height="95dp"
-        android:background="#3CC89F9F"
-        android:fontFamily="@font/aladin"
+        android:fontFamily="@font/almendra_sc"
         android:gravity="center"
-        android:text="Know The Weather"
-        android:textColor="#000000"
+        android:text="KT-Weather"
+        android:textColor="#243923"
         android:textSize="45sp"
+        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.05" />
+        app:layout_constraintVertical_bias="0.066" />
 
     <EditText
         android:id="@+id/editTextTextCityName"
@@ -43,20 +51,22 @@
         android:layout_height="49dp"
         android:capitalize="words"
         android:ems="10"
+        android:fontFamily="@font/aldrich"
         android:gravity="center"
         android:hint="Enter a City"
         android:inputType="textPersonName"
         android:textAppearance="@style/TextAppearance.AppCompat.Body2"
+        android:textColor="#FFFFFF"
         android:textColorHighlight="#401414"
         android:textColorLink="#CC3030"
         android:textSize="19sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.516"
-        app:layout_constraintStart_toStartOf="@+id/imageView"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.299" />
+        app:layout_constraintVertical_bias="0.309" />
 
     <Button
         android:id="@+id/button"
@@ -64,7 +74,7 @@
         android:layout_height="50dp"
         android:onClick="getWeather"
         android:text="Check"
-        app:backgroundTint="#21915A"
+        app:backgroundTint="#2EA168"
         app:cornerRadius="8mm"
         app:iconPadding="8dp"
         app:iconTint="#C39797"

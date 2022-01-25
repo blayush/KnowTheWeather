@@ -1,6 +1,7 @@
 package com.example.knowtheweather;
 
 import android.graphics.Color;
+import android.graphics.drawable.AnimationDrawable;
 import android.graphics.drawable.ColorDrawable;
 import android.media.MediaPlayer;
 import android.os.AsyncTask;
@@ -15,6 +16,7 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.fragment.app.FragmentTransaction;
 
 import com.android.volley.Request;
@@ -46,6 +48,11 @@ public class MainActivity extends AppCompatActivity {
 
         editTextCityName =(EditText)findViewById(R.id.editTextTextCityName);
         weatherTextView=(TextView)findViewById(R.id.weathertextView);
+        ConstraintLayout constraintLayout = findViewById(R.id.mainConstraintLayout);
+        AnimationDrawable animationDrawable = (AnimationDrawable) constraintLayout.getBackground();
+        animationDrawable.setEnterFadeDuration(2000);
+        animationDrawable.setExitFadeDuration(4000);
+        animationDrawable.start();
 
     }
     public void getWeather(View view){
@@ -75,7 +82,7 @@ public class MainActivity extends AppCompatActivity {
                     weatherTextView.setText(e.toString());
                 }
 
-
+                openDialog();
             }
         }, new Response.ErrorListener() {
             @Override
@@ -93,7 +100,7 @@ public class MainActivity extends AppCompatActivity {
         // bottomsheet dialog
 //        WeatherDialog weatherDialog=new WeatherDialog();
 //        weatherDialog.show(getSupportFragmentManager(),weatherDialog.getTag());
-        openDialog();
+
     }
 
     private void openDialog() {
