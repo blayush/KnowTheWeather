@@ -3,7 +3,9 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/91930/AndroidStudioProjects/KnowTheWeather/app/src/main/res/drawable/dialog_gradient.xml" value="0.16" />
         <entry key="..\:/Users/91930/AndroidStudioProjects/KnowTheWeather/app/src/main/res/layout/activity_main.xml" value="0.264" />
+        <entry key="..\:/Users/91930/AndroidStudioProjects/KnowTheWeather/app/src/main/res/layout/weather_dialog.xml" value="0.536" />
       </map>
     </option>
   </component>

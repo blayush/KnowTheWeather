@@ -15,6 +15,7 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.FragmentTransaction;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -35,7 +36,7 @@ import java.net.URL;
 public class MainActivity extends AppCompatActivity {
     EditText editTextCityName;
     TextView weatherTextView;
-
+    String temperature,weather,cityName;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,20 +46,13 @@ public class MainActivity extends AppCompatActivity {
 
         editTextCityName =(EditText)findViewById(R.id.editTextTextCityName);
         weatherTextView=(TextView)findViewById(R.id.weathertextView);
+
     }
     public void getWeather(View view){
-//        DownloadTask task= new DownloadTask();
+
         MediaPlayer mediaPlayer= MediaPlayer.create(getApplicationContext(),R.raw.mouseclick);
         mediaPlayer.start();
-//        try {
-//            task.execute("http://api.openweathermap.org/data/2.5/weather?q="+ editTextCityName.getText().toString() + "&APPID=036e44d3f96233198f0c9f1c3608759a");
-//           // weatherTextView.setText("Weather : " + task.main + " "+" Description : "+task.description );
-//        }
-//        catch(Exception e){
-//            e.printStackTrace();
-//            Toast.makeText(MainActivity.this, "Type Correct City Name!", Toast.LENGTH_SHORT).show();
-//        }
-
+        cityName=editTextCityName.getText().toString();
         //----------NEW VOLLEY CODE-------------//
         String url="http://api.openweathermap.org/data/2.5/weather?q="+ editTextCityName.getText().toString() + "&APPID=036e44d3f96233198f0c9f1c3608759a";
         StringRequest stringRequest=new StringRequest(Request.Method.GET, url, new Response.Listener<String>() {
@@ -70,11 +64,11 @@ public class MainActivity extends AppCompatActivity {
                     responseObject = new JSONObject(response);
                     JSONArray weatherArray=responseObject.getJSONArray("weather");
                     JSONObject weatherData=weatherArray.getJSONObject(0);
-                    String weather=weatherData.getString("main");
+                    weather=weatherData.getString("main");
                     JSONObject mainObject=responseObject.getJSONObject("main");
                     Double temp=mainObject.getDouble("temp");
                     temp=temp-273.15;
-                    String temperature=String.format("%.1f",temp);
+                    temperature=String.format("%.1f",temp);
                     weatherTextView.setText("Weather : "+weather+"\nTemperature : "+temperature+" C");
                 } catch (JSONException e) {
                     e.printStackTrace();
@@ -94,64 +88,23 @@ public class MainActivity extends AppCompatActivity {
         //---to hide keyboard---//
         InputMethodManager manager=(InputMethodManager)getSystemService(INPUT_METHOD_SERVICE);
         manager.hideSoftInputFromWindow(editTextCityName.getWindowToken(),0);
+
+
+        // bottomsheet dialog
+//        WeatherDialog weatherDialog=new WeatherDialog();
+//        weatherDialog.show(getSupportFragmentManager(),weatherDialog.getTag());
+        openDialog();
     }
-//    public class DownloadTask extends AsyncTask<String,Void,String> {
-//        public String main ;
-//        public String description;
-//        public String message="";
-//        @Override
-//        protected String doInBackground(String... urls) {
-//            String result="";
-//            URL url;
-//            HttpURLConnection urlConnection = null;
-//            try {
-//                url= new URL(urls[0]);
-//                urlConnection= (HttpURLConnection) url.openConnection();
-//                InputStream in=urlConnection.getInputStream();
-//                InputStreamReader reader=new InputStreamReader(in);
-//                int data=reader.read();
-//                while(data!=-1){
-//                    char current=(char)data;
-//                    result=result + current;
-//                    data=reader.read();
-//                }
-//                return result;
-//            } catch (Exception e) {
-//
-//                e.printStackTrace();
-//              //  Toast.makeText(MainActivity.this, "Type Correct City Name!", Toast.LENGTH_SHORT).show();
-//                return "";
-//            }
-//        }
-//        @Override
-//        protected void onPostExecute(String s) {
-//            super.onPostExecute(s);
-//
-//            if(s!=null){
-//                try {
-//                    JSONObject jsonObject = new JSONObject(s);
-//                    String weatherInfo = null;
-//                    weatherInfo = jsonObject.getString("weather");
-//                    Log.i("Weather content", weatherInfo);
-//                    JSONArray a = new JSONArray(weatherInfo);
-//                    for (int i = 0; i < a.length(); i++) {
-//                        JSONObject jsonPart = a.getJSONObject(i);
-//                         main=jsonPart.getString("main");
-//                         description=jsonPart.getString("description");
-//                         Log.i("main ",main);
-//                         Log.i("description",description);
-//                         if(!main.equals("")&&!description.equals(""))message+=main + " : " + description +"\r\n";
-//                    }
-//                    if(!message.equals(""))weatherTextView.setText(message);
-//
-//                } catch (Exception e) {
-//                    Toast.makeText(MainActivity.this, "Type Correct City Name!", Toast.LENGTH_SHORT).show();
-//                    e.printStackTrace();
-//                    //
-//                }
-//            }
-//
-//
-//        }
-//    }
+
+    private void openDialog() {
+        WeatherDialog weatherDialog=new WeatherDialog();
+        weatherDialog.show(getSupportFragmentManager(),null);
+        Bundle bundle= new Bundle();
+        bundle.putString("city",cityName);
+        bundle.putString("temp",temperature);
+        bundle.putString("weather",weather);
+        weatherDialog.setArguments(bundle);
+
+    }
+
 }
