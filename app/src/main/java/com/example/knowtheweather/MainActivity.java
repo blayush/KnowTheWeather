@@ -74,7 +74,7 @@ public class MainActivity extends AppCompatActivity {
                     JSONObject mainObject=responseObject.getJSONObject("main");
                     Double temp=mainObject.getDouble("temp");
                     temp=temp-273.15;
-                    String temperature=String.format("%.2f",temp);
+                    String temperature=String.format("%.1f",temp);
                     weatherTextView.setText("Weather : "+weather+"\nTemperature : "+temperature+" C");
                 } catch (JSONException e) {
                     e.printStackTrace();
