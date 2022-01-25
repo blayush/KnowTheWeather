@@ -80,7 +80,7 @@
         android:id="@+id/weathertextView"
         android:layout_width="340dp"
         android:layout_height="177dp"
-        android:fontFamily="@font/aladin"
+        android:fontFamily="@font/abhaya_libre_semibold"
         android:gravity="center"
         android:text="Let's Check Weather"
         android:textColor="#18FFFF"
